@@ -25,20 +25,26 @@
   <%= submit_tag l(:label_users_xlsie_button_back), :name => 'back_to_import' %>
   <%= submit_tag l(:label_users_xlsie_button_validate) %>
   <%= submit_tag l(:label_users_xlsie_button_import), :name => 'create_imported_users' %>
-  <%= link_to_remote l(:label_preview),
-        { :url => { :controller => 'users_xls_impex', :action => 'import_preview' },
+  <!-- %= link_to_remote l(:label_preview), -->
+  <!-- { :url => { :controller => 'users_xls_impex', :action => 'import_preview' }, -->
+  <%= link_to l(:label_preview), :remote => true,
+          :url => { :controller => 'users_xls_impex', :action => 'import_preview' },
           :method => 'post',
           :update => 'preview',
           :with => "Form.serialize('import_options_form')",
-          :complete => "Element.scrollTo('preview')"
-        }, :accesskey => accesskey(:preview) %>
-  <%= link_to_remote l(:label_users_xlsie_templates_help),
-        { :url => { :controller => 'users_xls_impex', :action => 'import_preview', :mode => 'help' },
+          :complete => "Element.scrollTo('preview')",
+         :accesskey => accesskey(:preview) %>
+  <!--  }, :accesskey => accesskey(:preview) % -->
+  <!-- %= link_to_remote l(:label_users_xlsie_templates_help), -->
+  <!-- { :url => { :controller => 'users_xls_impex', :action => 'import_preview', :mode => 'help' }, -->
+  <%= link_to l(:label_users_xlsie_templates_help), :remote => true,
+         :url => { :controller => 'users_xls_impex', :action => 'import_preview', :mode => 'help' },
           :method => 'post',
           :update => 'preview',
           :with => "Form.serialize('import_options_form')",
-          :complete => "Element.scrollTo('preview')"
-        }, :accesskey => accesskey(:preview) %>
+          :complete => "Element.scrollTo('preview')",
+         :accesskey => accesskey(:preview) %>
+  <!--  }, :accesskey => accesskey(:preview) % -->
 <% end %>
 
 <div id="preview" class="wiki"></div>
