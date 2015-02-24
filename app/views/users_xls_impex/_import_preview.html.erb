@@ -1,0 +1,20 @@
+<br/>
+<br/>
+<table class="list">
+  <thead><tr>
+    <% @xls_columns.each do |column| %>
+      <th><%= h(column[0]) %><br/>[<%= h(column[1]) %>]</th>
+    <% end %>
+  </tr></thead>
+  <tbody>
+    <% @formatted_values.each do |fv| -%>
+    <tr class="<%= cycle("odd", "even") %>">
+      <% fv.each do |v| %><%= content_tag('td', v) %><% end %>
+    </tr>
+    <% end %>
+    <tr class="<%= cycle("odd", "even") %>">
+      <% @xls_columns.each do |column| %><td>...</td><% end %>
+    </tr>
+  </tbody>
+</table>
+

@@ -1,0 +1,15 @@
+*~
+.idea
+.yardoc
+.rbenv-version
+\#*\#
+.\#*
+.bundle
+bundler
+spec/artifacts
+*.swp
+.rvmrc
+*.pid
+vendor
+!vendor/errors
+.DS_Store

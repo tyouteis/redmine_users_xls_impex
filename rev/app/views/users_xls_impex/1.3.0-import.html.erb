@@ -1,0 +1,45 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag "users_xlsie.css", :plugin => UIEX_AssetHelpers::PLUGIN_NAME.to_s, :media => "screen" %>
+<% end %>
+
+<h2><%=l(:label_users_xlsie_header)%></h2>
+
+<% form_tag({:action => 'import_results'}, {:multipart => true, :id => 'import_options_form' }) do %>
+  <fieldset class="box"><legend><%= l(:label_users_xlsie_legend_columns) %></legend>
+    <% @xls_columns.each do |column| %>
+      <label class="uxlsie_tabular2"><%= h(column[0]) %>:</label>
+        <%= select_tag "xls_columns_map[#{column[1]}]", uxlsie_get_column_options(column[1].to_i,column[0]) %>
+      <br/>
+    <% end %>
+  </fieldset>
+
+  <fieldset class="box"><legend><%= l(:label_users_xlsie_legend_ioptions) %></legend>
+    <label class="uxlsie_tabular2"><%= l(:label_users_xlsie_opt_update_only) %></label>
+    <%= select_tag("update_only", uxlsie_get_update_options) %><br/>
+    <label>
+      <%= check_box_tag("send_user_info",1,true) %>
+      <%= l(:label_users_xlsie_opt_send_info) %>
+    </label>
+  </fieldset>
+
+  <%= submit_tag l(:label_users_xlsie_button_back), :name => 'back_to_import' %>
+  <%= submit_tag l(:label_users_xlsie_button_validate) %>
+  <%= submit_tag l(:label_users_xlsie_button_import), :name => 'create_imported_users' %>
+  <%= link_to_remote l(:label_preview),
+        { :url => { :controller => 'users_xls_impex', :action => 'import_preview' },
+          :method => 'post',
+          :update => 'preview',
+          :with => "Form.serialize('import_options_form')",
+          :complete => "Element.scrollTo('preview')"
+        }, :accesskey => accesskey(:preview) %>
+  <%= link_to_remote l(:label_users_xlsie_templates_help),
+        { :url => { :controller => 'users_xls_impex', :action => 'import_preview', :mode => 'help' },
+          :method => 'post',
+          :update => 'preview',
+          :with => "Form.serialize('import_options_form')",
+          :complete => "Element.scrollTo('preview')"
+        }, :accesskey => accesskey(:preview) %>
+<% end %>
+
+<div id="preview" class="wiki"></div>
+

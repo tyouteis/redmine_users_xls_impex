@@ -1,0 +1,13 @@
+<h2><%=l(:label_users_xlsie_header)%></h2>
+
+<% form_tag({:action => 'prepare_import'}, {:multipart => true}) do %>
+  <p>
+    <%= label_tag('xls_file', l(:label_users_xlsie_xls_file_field) ) %><br/>
+    <%= file_field_tag 'xls_file', :size => 60, :accept => 'application/vnd.ms-excel' %>
+  </p>
+
+  <%= link_to 'Back', {:controller => 'users', :action => 'index' } %>
+  &nbsp;&nbsp;
+  <%= submit_tag l(:label_users_xlsie_button_file) %>
+<% end %>
+

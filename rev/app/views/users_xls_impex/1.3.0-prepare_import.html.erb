@@ -1,0 +1,15 @@
+<h2><%=l(:label_users_xlsie_header)%></h2>
+
+<% form_tag({:action => 'import'} ) do %>
+  <fieldset class="box"><legend><%= l(:label_users_xlsie_legend_prepare) %></legend>
+    <p>
+      <label class="uxlsie_tabular"><%= l(:label_users_xlsie_sheet_select) %>
+      <%= select_tag 'xls_sheets', uxlsie_options_for_list_of_worksheets %>
+      </label>
+    </p>
+  </fieldset>
+
+  <%= submit_tag l(:label_users_xlsie_button_back), :name => 'back_to_index' %>
+  <%= submit_tag l(:label_users_xlsie_button_prepare) %>
+<% end %>
+

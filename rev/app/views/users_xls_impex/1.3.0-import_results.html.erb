@@ -1,0 +1,76 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag "users_xlsie.css", :plugin => UIEX_AssetHelpers::PLUGIN_NAME.to_s, :media => "screen" %>
+<% end %>
+
+<h2><%=l(:label_users_xlsie_header)%></h2>
+
+<% form_tag({:action => 'import_start'}) do %>
+  <fieldset class="box"><legend><%= l(:label_users_xlsie_legend_results) %></legend>
+    <% unless params[:send_user_info].blank? %>
+      <%= hidden_field_tag('send_user_info', params[:send_user_info]) %>
+    <% end %>
+    <% if @validate_only == true %>
+      <%= l( :label_users_xlsie_valid_total, @users_saved.count) %>
+    <% else %>
+      <%= l( :label_users_xlsie_success_total, @users_saved.count) %>
+      <% if @users_saved.count != 0 %>
+        <%= uxlsie_list_of_saved_users %>
+      <% else %>
+        <%= l(:label_none)%>
+      <% end %>
+    <% end %>
+    <br/>
+    <% if @update_users_mode != 0 %>
+      <%= l(:label_users_xlsie_updated_total, @users_updated.count) %>
+      <% if @users_updated.count != 0 %>
+        <%= uxlsie_list_of_updated_users %>
+      <% else %>
+        <%= l(:label_none)%>
+      <% end %>
+      <br/>
+      <%= l(:label_users_xlsie_duplicated_total, @users_duplicated.count) %>
+      <% if @users_duplicated.count != 0 %>
+        <%= uxlsie_list_of_duplicated_users %>
+      <% else %>
+        <%= l(:label_none)%>
+      <% end %>
+      <br/>
+    <% end %>
+    <%= l(:label_users_xlsie_skipped_total, @rows_skipped) %><br/>
+    <%= l(:label_users_xlsie_errors_total, @users_failed.count) %>
+  </fieldset>
+
+  <% if @users_failed.count > 0 %>
+    <fieldset class="box"><legend><%= l(:label_users_xlsie_legend_errors) %></legend>
+      <table class="list">
+        <thead><tr>
+          <th><%= h(l(:label_users_xlsie_row_number)) %></th>
+          <th><%= h(l(:label_users_xlsie_error_desc)) %></th>
+          <% @xls_columns.each do |column| %>
+            <th><%= h(column[0]) %><br/>[<%= h(column[1]) %>]</th>
+          <% end %>
+        </tr></thead>
+        <tbody>
+        <% @users_failed.each_with_index do |ic,idx| -%>
+          <tr class="<%= cycle("odd", "even") %>">
+            <td><%= ic[:row].to_s %></td>
+            <td><%= uxlsie_format_user_errors(ic) %></td>
+            <% @xls_columns.each_with_index do |column,idx2| %>
+              <td><%= h(@formatted_values[idx][idx2]) %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </fieldset>
+  <% end %>
+
+  <% if @validate_only == true %>
+    <%= submit_tag l(:label_users_xlsie_button_back), :name => 'step_back_2' %>
+    <%= submit_tag l(:label_users_xlsie_button_apply), :name => 'step_back' %>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <% end %>
+  <%= submit_tag l(:label_users_xlsie_button_users), :name => 'to_users'  %>
+  <%= submit_tag l(:label_users_xlsie_button_again) %>
+<% end %>
+

@@ -1,0 +1,37 @@
+h2. Redmine users XLS import/export
+
+* Plugin allows import and export of user data to/from XLS file.
+* Plugin relies on gem spreadsheet for XLS based operations. Please install this gem before running plugin.
+* Plugin adds two links - 'import' and 'export' to the users admin page (/redmine/users)
+* Plugin patches *users\index.html.erb* view. Additions are marked with _VVK start_ and _VVK end_ comments
+* Plugin uses column *'I'* to check if this entry should be imported.
+
+Please note that this plugin is for *advanced users only* who understand how users model works in Redmine. I will provide only *limited support* for this plugin.
+
+h3. Installation notes
+
+# Install spreadsheet gem ('gem install spreadsheet')
+# Install plugin "Plugin views with revisions":http://www.redmine.org/plugins/redmine_plugin_views_revisions if you do not have it installed
+# Follow the Redmine plugin installation steps at: http://www.redmine.org/wiki/redmine/Plugins
+# Run rake task
+ *rake redmine:plugins:process_version_change RAILS_ENV=production*
+# Restart your Redmine web servers (e.g. mongrel, thin, mod_rails)
+
+h3. History
+
+0.1.1
+
+* Rails 3 (Redmine 2.x) compatibility
+
+0.1.0
+
+* Plugin depends on "Plugin views with revisions":http://www.redmine.org/plugins/redmine_plugin_views_revisions for further Redmine compatibility
+
+0.0.3
+
+* Redmine 1.3.x compatibility
+
+0.0.2
+
+* First public release
+

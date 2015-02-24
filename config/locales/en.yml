@@ -1,0 +1,52 @@
+en:
+  label_users_xlsie_button_export: "Export"
+  label_users_xlsie_button_back: "Back to users"
+
+  label_users_xlsie_field_id: "User ID"
+  label_users_xlsie_field_include_in_import: "I"
+  label_users_xlsie_field_auth_source_id: "Auth src ID"
+  label_users_xlsie_field_hashed_password: "Hashed password"
+
+  label_users_xlsie_default: "Default"
+  
+  label_users_xlsie_row_number: "Row #"
+  label_users_xlsie_error_desc: "Error"
+  
+  label_users_xlsie_caption: "Users XLS Import"
+  label_users_xlsie_header: "Users XLS Import"
+
+  label_users_xlsie_button_apply: "< Back"
+
+  label_users_xlsie_xls_file_field: "Select XLS file:"
+  label_users_xlsie_button_file: "Next >"
+  
+  label_users_xlsie_legend_prepare: "Global settings"
+  label_users_xlsie_sheet_select: "Select worksheet:"
+  label_users_xlsie_button_prepare: "Next >"
+
+  label_users_xlsie_legend_columns: "Select correspondence (I-include in import, ID,login,email-for user update)"
+  label_users_xlsie_legend_ioptions: "Options"
+  label_users_xlsie_opt_update_only: "Update policy: "
+  label_users_xlsie_opt_send_info: "Send activation information to users"
+  label_users_xlsie_opt_update_a: "Add only"
+  label_users_xlsie_opt_update_b: "Add and update"
+  label_users_xlsie_opt_update_c: "Update only"
+  label_users_xlsie_dtracker_none: "<< Please select >>"
+  label_users_xlsie_option_ignore: "<< Ignore >>"
+  label_users_xlsie_button_validate: "Validate"
+  label_users_xlsie_button_import: "Import"
+  label_users_xlsie_templates_help: "Help"
+  label_users_xlsie_sample_lines: "Sample lines"
+  
+  label_users_xlsie_legend_results: "Total results"
+  label_users_xlsie_legend_errors: "Errors detailed"
+  label_users_xlsie_updated_total: "Users updated (%{count}): "
+  label_users_xlsie_duplicated_total: "Duplicate users found (%{count}): "
+  label_users_xlsie_skipped_total: "Rows skipped: %{count}"
+  label_users_xlsie_errors_total: "Errors: %{count}"
+  label_users_xlsie_success_total: "Users imported (%{count}): "
+  label_users_xlsie_valid_total: "Valid users: %{count}"
+  label_users_xlsie_button_users: "Back to users"
+  label_users_xlsie_button_again: "Start over"
+  label_users_xlsie_button_apply: "Apply"
+  label_users_xlsie_button_back: "< Back"
