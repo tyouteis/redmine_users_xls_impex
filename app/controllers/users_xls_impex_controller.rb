@@ -127,6 +127,10 @@ class UsersXlsImpexController < ApplicationController
   end
 
   def prepare_import
+    if params[:xls_file].blank?
+        redirect_to :action => 'import_start'
+        return
+    end
     download_xls_file
     session[:users_xlsie_file]=@xls_book_name
     load_xls_file
